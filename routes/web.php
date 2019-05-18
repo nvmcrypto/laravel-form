@@ -19,8 +19,23 @@
     //php artisan make:seeder ClientsTableSeeder - comando para criar o seeder que vai utilizar o factory para inserir os dados faker na tabela sem o tinker
     //php artisan db:seed - executa as seeds no terminal
     //php artisan migrate:refresh --seed - Desfaz todas as migrações e seeds e executa novamente
+    //php artisan make:controller -  criando um controller
+    //php artisan make:controller Admin\ClientsController --resource - cria o controller com as funções
+    //php artisan route:list - lista todas as rotas
 
-    
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::group([
+    'prefix' => 'admin',
+     'namespace' => 'Admin'        
+], function () {
+    Route::resource('clients','ClientsController');
+});
+
+/*Route::group(['prefix' => 'admin'], function () { //Precisaria ficar repetindo o nome da pasta Admin pois esta sem o namespace
+    Route::resource('clients','Admin\ClientsController');
+});*/
