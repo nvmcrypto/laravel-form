@@ -29,5 +29,6 @@ class AppServiceProvider extends ServiceProvider
         //composer dumpautoload - Deve rodar esse comando caso exclua um model e/ou migration
         //php artisan make:factory ClientFactory --model=App/Client - criando uma factory de cliente
         // $client = factory(\App\Client::class,5)->make() - gera os dados da classe factory no tinker(php artisan tinker) e o create() cria os dados na base
+        //\App\Client::all(); - confirma se os dados foram cadastrados na base depois de executar o create()
     }
 }
