@@ -38,7 +38,7 @@ class ClientsController extends Controller //Controller resource
     public function store(Request $request)
     {
         $data = $request->all();
-        $data['defaulter'] = 0;
+        $data['defaulter'] = $request->has('defaulter');//has retorna um valor boolean caso o campo tenha valor ou não.
         Client::create($data); // Desta forma pega o $fillable criado na classe client, se não tiver o fillable da erro se passar campo a mais.
         return redirect()->to('/admin/clients');
         /*$client = new Client(); // Teria que colocar um por um nesse modo
