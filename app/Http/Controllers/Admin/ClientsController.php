@@ -14,7 +14,8 @@ class ClientsController extends Controller //Controller resource
      */
     public function index()
     {
-        //
+        $clients = \App\Client::all();
+        return view('admin.clients.index',compact('clients'));
     }
 
     /**
