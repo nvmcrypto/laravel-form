@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use \App\Client;
 
 class ClientsController extends Controller //Controller resource
 {
@@ -25,7 +26,7 @@ class ClientsController extends Controller //Controller resource
      */
     public function create()
     {
-        //
+        return view('admin.clients.create');
     }
 
     /**
@@ -36,7 +37,12 @@ class ClientsController extends Controller //Controller resource
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $data['defaulter'] = 0;
+        Client::create($data); // Desta forma pega o $fillable criado na classe client, se não tiver o fillable da erro se passar campo a mais.
+        return redirect()->to('/admin/clients');
+        /*$client = new Client(); // Teria que colocar um por um nesse modo
+        $client->name = $request->get('name');*/
     }
 
     /**
