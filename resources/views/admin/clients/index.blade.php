@@ -1,9 +1,11 @@
+@extends('layouts.layout') <!-- chamando a pagina layout -->
+@section('content') <!-- conectando ao  @@yield da pagina layout -->
 
     <h3>Listagem de clientes</h3>
 
     <br/><br/>
 
-    <table border="1">
+    <table class="table table-striped">
 
         <thead>
 
@@ -60,3 +62,4 @@
         </tbody>
 
     </table>
+@endsection
