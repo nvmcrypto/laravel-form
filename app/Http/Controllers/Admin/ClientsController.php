@@ -38,6 +38,19 @@ class ClientsController extends Controller //Controller resource
      */
     public function store(Request $request)
     {
+        $maritalStatus = implode(',',array_keys(Client::MARITAL_STATUS));
+        $this->validate($request, [
+            'name'=>'required|max:255',
+            'document_number'=>'required',
+            'email' => 'required|email',
+            'phone'=>'required',
+            'date_birth'=>'required|date',
+            'marital_status'=>"required|in:$maritalStatus",
+            'sex'=>'required|in:m,f',
+            'physical_disability'=>'max:255'
+            //ou'marital_status'=>'required|in:1,2,3'
+        ]);
+        
         $data = $request->all();
         $data['defaulter'] = $request->has('defaulter');//has retorna um valor boolean caso o campo tenha valor ou não.
         Client::create($data); // Desta forma pega o $fillable criado na classe client, se não tiver o fillable da erro se passar campo a mais.
