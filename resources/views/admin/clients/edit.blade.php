@@ -10,6 +10,8 @@
 @endif
 <form method="post" action="{{route('clients.update',['client'=>$client->id])}}">
     {{csrf_field()}}
+    <!--<input type="hidden" name="_method" value="PUT"> OU USAR O METHOD_FIELD ABAIXO, esse PUT E NECESSARIO PARA EDIÇÃO-->
+    {{method_field('PUT')}}
     <div class="form-group">
 
         <label for="name">Nome</label>
@@ -58,11 +60,11 @@
 
             <option value="">Selecione o estado civil</option>
 
-            <option value="1" >Solteiro</option>
+            <option value="1" {{$client->marital_status == 1?'selected="selected"':''}}>Solteiro</option>
 
-            <option value="2" >Casado</option>
+            <option value="2" {{$client->marital_status == 2?'selected="selected"':''}}>Casado</option>
 
-            <option value="3">Divorciado</option>
+            <option value="3" {{$client->marital_status == 3?'selected="selected"':''}}>Divorciado</option>
 
             </option>
 
@@ -123,6 +125,6 @@
 
     </div>
     <button type="submit" class="btn btn-default">Enviar</button>
-    <a class="btn btn-default" href="{{route('clients.index')}}">Voltar</a> <!--inclui o botão voltar--!> 
+    <a class="btn btn-default" href="{{route('clients.index')}}">Voltar</a> <!--inclui o botão voltar--> 
 </form>
 @endsection
