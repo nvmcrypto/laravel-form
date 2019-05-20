@@ -4,8 +4,8 @@
     <h3>Listagem de clientes</h3>
 
     <br/><br/>
-
-    <table class="table table-striped">
+<a class="btn btn-default" href="{{route('clients.create')}}">Criar Novo</a>
+<table class="table table-striped">
 
         <thead>
 

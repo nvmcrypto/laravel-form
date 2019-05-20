@@ -15,6 +15,7 @@ class ClientsController extends Controller //Controller resource
      */
     public function index()
     {
+        var_dump(route('meu-nome'));//exibindo a rota
         $clients = \App\Client::all();
         return view('admin.clients.index',compact('clients'));
     }

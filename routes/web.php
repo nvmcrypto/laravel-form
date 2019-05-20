@@ -36,6 +36,16 @@ Route::group([
     Route::resource('clients','ClientsController');
 });
 
+//NOMEANDO AS ROTAS
+Route::name('meu-nome')->get('/rota-nomeada', function(){
+    echo "Hello World!!";
+});
+//ou
+/*Route::get('/rota-nomeada', function(){
+    echo "Hello World!!";
+})->name('meu-nome1');*/
+//fim NOMEANDO AS ROTAS
+
 /*Route::group(['prefix' => 'admin'], function () { //Precisaria ficar repetindo o nome da pasta Admin pois esta sem o namespace
     Route::resource('clients','Admin\ClientsController');
 });*/
