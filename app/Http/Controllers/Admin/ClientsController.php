@@ -27,7 +27,7 @@ class ClientsController extends Controller //Controller resource
      */
     public function create()
     {
-        return view('admin.clients.create');
+        return view('admin.clients.create',['client'=>new Client()]);//Passa uma instancia vazia para não da erro no criar com o template do edit
     }
 
     /**
