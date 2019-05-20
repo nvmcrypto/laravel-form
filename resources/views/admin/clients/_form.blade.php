@@ -1,10 +1,10 @@
 {{csrf_field()}}
-
+<!-- {{old('name')}} Salva o valor digitado anteriormente - recarregar a pagina sem apagar os dados do form -->
 <div class="form-group">
 
     <label for="name">Nome</label>
 
-    <input class="form-control" id="name" name="name" value="{{$client->name}}"><!-- Posso colocar tb o required -->
+    <input class="form-control" id="name" name="name" value="{{old('name',$client->name)}}"><!-- Posso colocar tb o required -->
 
 </div>
 
@@ -14,7 +14,7 @@
 
     <label for="document_number">Documento</label>
 
-    <input class="form-control" id="document_number" name="document_number" value="{{$client->document_number}}">
+    <input class="form-control" id="document_number" name="document_number" value="{{old('document_number',$client->document_number)}}">
 
 </div>
 
@@ -24,7 +24,7 @@
 
     <label for="email">E-mail</label>
 
-    <input class="form-control" id="email" name="email" type="email" value="{{$client->email}}">
+    <input class="form-control" id="email" name="email" type="email" value="{{old('email',$client->email)}}">
 
 </div>
 
@@ -34,25 +34,28 @@
 
     <label for="phone">Telefone</label>
 
-    <input class="form-control" id="phone" name="phone" value="{{$client->phone}}">
+    <input class="form-control" id="phone" name="phone" value="{{old('phone',$client->phone)}}">
 
 </div>
 
+@php
+    $maritalStatus = $client->marital_status;
+@endphp
 
 
 <div class="form-group">
 
     <label for="marital_status">Estado Civil</label>
 
-    <select class="form-control" name="marital_status" id="marital_status" value="{{$client->marital_status}}">
+    <select class="form-control" name="marital_status" id="marital_status" value="{{$maritalStatus}}">
 
         <option value="">Selecione o estado civil</option>
 
-        <option value="1" {{$client->marital_status == 1?'selected="selected"':''}}>Solteiro</option>
+        <option value="1" {{old('marital_status',$maritalStatus) == 1?'selected="selected"':''}}>Solteiro</option>
 
-        <option value="2" {{$client->marital_status == 2?'selected="selected"':''}}>Casado</option>
+        <option value="2" {{old('marital_status',$maritalStatus) == 2?'selected="selected"':''}}>Casado</option>
 
-        <option value="3" {{$client->marital_status == 3?'selected="selected"':''}}>Divorciado</option>
+        <option value="3" {{old('marital_status',$maritalStatus) == 3?'selected="selected"':''}}>Divorciado</option>
 
         </option>
 
@@ -64,17 +67,20 @@
 
     <label for="date_birth">Data Nasc.</label>
 
-    <input class="form-control" id="date_birth" name="date_birth" type="date" value="{{$client->date_birth}}">
+    <input class="form-control" id="date_birth" name="date_birth" type="date" value="{{old('date_birth',$client->date_birth)}}">
 
 </div>
 
+@php
+    $sex = $client->sex;
+@endphp
 
 
 <div class="radio">
 
     <label>
 
-        <input type="radio" name="sex" value="m" {{$client->sex == 'm'?'checked="checked"':''}}> Masculino
+        <input type="radio" name="sex" value="m" {{old('sex',$sex) == 'm'?'checked="checked"':''}}> Masculino
 
     </label>
 
@@ -86,7 +92,7 @@
 
     <label>
 
-        <input type="radio" name="sex" value="f" {{$client->sex == 'f'?'checked="checked"':''}}> Feminino
+        <input type="radio" name="sex" value="f" {{old('sex',$sex) == 'f'?'checked="checked"':''}}> Feminino
 
     </label>
 
@@ -98,7 +104,7 @@
 
     <label for="physical_disability">Deficiência Física</label>
 
-    <input class="form-control" id="physical_disability" name="physical_disability" value="{{$client->physical_disability}}">
+    <input class="form-control" id="physical_disability" name="physical_disability" value="{{old('physical_disability',$client->physical_disability)}}">
 
 </div>
 
@@ -107,7 +113,7 @@
 
     <label>
 
-        <input id="defaulter" name="defaulter" type="checkbox" {{$client->defaulter?'checked="checked"':''}}> Inadimplente?
+        <input id="defaulter" name="defaulter" type="checkbox" {{old('defaulter',$client->defaulter)?'checked="checked"':''}}> Inadimplente?
 
     </label>
 
