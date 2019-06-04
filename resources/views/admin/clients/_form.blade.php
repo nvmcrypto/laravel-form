@@ -38,6 +38,8 @@
 
 </div>
 
+@if($clientType == \App\Client::TYPE_INDIVIDUAL)
+
 @php
     $maritalStatus = $client->marital_status;
 @endphp
@@ -107,7 +109,15 @@
     <input class="form-control" id="physical_disability" name="physical_disability" value="{{old('physical_disability',$client->physical_disability)}}">
 
 </div>
+    @else
+    <div class="form-group">
 
+        <label for="company_name">Nome Fantasia</label>
+    
+        <input class="form-control" id="company_name" name="company_name" value="{{old('company_name',$client->company_name)}}"><!-- Posso colocar tb o required -->
+    
+    </div>
+@endif
 
 <div class="checkbox">
 
