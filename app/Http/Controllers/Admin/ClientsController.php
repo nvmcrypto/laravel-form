@@ -64,9 +64,9 @@ class ClientsController extends Controller //Controller resource
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Client $client)/*edit($id) */
     {
-        $client = Client::findOrFail($id);
+        /*$client = Client::findOrFail($id); -- Substituido pela chamada direta do cliente da classe*/
         return view('admin.clients.edit', compact('client'));
     }
 
@@ -77,9 +77,9 @@ class ClientsController extends Controller //Controller resource
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Client $client) /*-- Substituido pela chamada direta do cliente da classe - (Route Model Binding Implicito)*/
     {
-        $client = Client::findOrFail($id);
+       /* $client = Client::findOrFail($id);*/
         $this->_validate($request);
         $data = $request->all();
         $data['defaulter'] = $request->has('defaulter');//has retorna um valor boolean caso o campo tenha valor ou não.
