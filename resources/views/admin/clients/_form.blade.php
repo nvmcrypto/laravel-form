@@ -1,4 +1,5 @@
 {{csrf_field()}}
+<input type="hidden" name="client_type" value="{{$clientType}}">
 <!-- {{old('name')}} Salva o valor digitado anteriormente - recarregar a pagina sem apagar os dados do form -->
 <div class="form-group">
 
