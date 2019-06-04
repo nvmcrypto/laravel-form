@@ -23,7 +23,7 @@
     //php artisan make:controller Admin\ClientsController --resource - cria o controller com as funções
     //php artisan route:list - lista todas as rotas
     //composer require doctrine/dbal:~2.5  -- Baixando a biblioteca dbal para executar as alterações de tabela pelo migrations
-
+    //composer require codeedu/code_validator:0.0.2 - baixando o code_validator do github para validar o digito do cpf
 
 Route::get('/', function () {
     return view('welcome');
