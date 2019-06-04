@@ -11,7 +11,8 @@ class Client extends Model
     const MARITAL_STATUS = [
         1 => 'Solteiro',
         2 => 'Casado',
-        3 => 'Divorciado'
+        3 => 'Divorciado',
+        4 => 'NA'
     ];
 
     protected $fillable = ['name','document_number','email','phone','defaulter','date_birth','sex','marital_status','physical_disability'];

@@ -17,13 +17,13 @@ class AlterToClientTypeClientsTable extends Migration
 
             $table->string('document_number')->unique()->change();
             $table->date('date_birth')->nullable()->change();
-            \DB::statement('ALTER TABLE clients CHANGE COLUMN sex sex CHAR NULL');
+            \DB::statement('ALTER TABLE clients CHANGE COLUMN sex sex CHAR NOT NULL');
             $maritalStatus = array_keys(\App\Client::MARITAL_STATUS);
             $maritalStatusString = array_map(function($value){
                 return "'$value'";
             },$maritalStatus);
             $maritalStatuseEnum = implode(',',$maritalStatusString);
-            \DB::statement("ALTER TABLE clients CHANGE COLUMN marital_status marital_status ENUM($maritalStatuseEnum) NULL");
+            \DB::statement("ALTER TABLE clients CHANGE COLUMN marital_status marital_status ENUM($maritalStatuseEnum) NOT NULL");
             //$table->char('sex',10)->nullable()->change();
             //$table->enum('marital_status',array_keys(\App\Client::MARITAL_STATUS))->nullable()->change();//puxando do model Client
             $table->string('company_name')->nullable();
