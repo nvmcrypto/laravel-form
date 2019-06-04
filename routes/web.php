@@ -22,6 +22,7 @@
     //php artisan make:controller -  criando um controller
     //php artisan make:controller Admin\ClientsController --resource - cria o controller com as funções
     //php artisan route:list - lista todas as rotas
+    //composer require doctrine/dbal:~2.5  -- Baixando a biblioteca dbal para executar as alterações de tabela pelo migrations
 
 
 Route::get('/', function () {

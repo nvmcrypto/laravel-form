@@ -24,5 +24,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         \Schema::defaultStringLength(191);//Evita o erro com migrations no mysql
+        $platform = \Schema::getConnection()->getDoctrineSchemaManager()->getDatabasePlatform(); //Retirando erro enum do doctrine 
+        $platform->registerDoctrineTypeMapping('enum','string'); //Retirando erro enum do doctrine 
     }
 }
